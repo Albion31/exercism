@@ -1,4 +1,11 @@
 defmodule SecretHandshake do
+  @secret_code %{
+      1 => "wink",
+      10 => "double blink",
+      100 => "close your eyes",
+      1000 => "jump",
+      10000 => "Reverse the order of the operations in the secret handshake"
+    }
   @doc """
   Determine the actions of a secret handshake based on the binary
   representation of the given `code`.
@@ -16,7 +23,7 @@ defmodule SecretHandshake do
   @spec commands(code :: integer) :: list(String.t())
   def commands(code) do
     if binary_converter(code) == "1" do
-      ["wink"]
+      [@secret_code[1]]
     end
   end
 
