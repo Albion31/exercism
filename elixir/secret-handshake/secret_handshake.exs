@@ -21,6 +21,7 @@ defmodule SecretHandshake do
   10000 = Reverse the order of the operations in the secret handshake
   """
   @spec commands(code :: integer) :: list(String.t())
+  def commands(0), do: []
   def commands(code) do
     binary_number = binary_converter(code) |> String.to_integer()
 
