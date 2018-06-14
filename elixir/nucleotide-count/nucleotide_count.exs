@@ -14,7 +14,10 @@ defmodule NucleotideCount do
   """
   @spec count([char], char) :: non_neg_integer
   def count([], _nucleotide), do: 0
+
   def count(strand, nucleotide) do
+    strand
+    |> Enum.count(fn x -> x == nucleotide end)
   end
 
   @doc """
