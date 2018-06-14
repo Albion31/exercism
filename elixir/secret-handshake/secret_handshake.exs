@@ -24,9 +24,7 @@ defmodule SecretHandshake do
   def commands(code) do
     binary_number = binary_converter(code) |> String.to_integer()
 
-    if binary_number == binary_number do
-      [@secret_code[binary_number]]
-    end
+    [@secret_code[binary_number]]
   end
 
   def binary_converter(number) do
