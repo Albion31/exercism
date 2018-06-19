@@ -24,7 +24,6 @@ defmodule SecretHandshake do
   10000 = Reverse the order of the operations in the secret handshake
   """
   @spec commands(code :: integer) :: list(String.t())
-
   def commands(code) do
     binary_converter(code)
     |> Enum.reduce([], fn
@@ -34,6 +33,7 @@ defmodule SecretHandshake do
     end)
   end
 
+  @spec binary_converter(number :: integer) :: map
   def binary_converter(number) do
     list =
       Integer.to_string(number, 2)
