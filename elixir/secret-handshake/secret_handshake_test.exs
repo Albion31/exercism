@@ -11,7 +11,7 @@ defmodule SecretHandshakeTest do
   describe "Create a handshake for a number" do
     # @tag :pending
     test "wink for 1" do
-      IO.inspect(SecretHandshake.binary_converter(2))
+      # IO.inspect(SecretHandshake.binary_converter(2))
       assert SecretHandshake.commands(1) == ["wink"]
     end
 
@@ -19,7 +19,7 @@ defmodule SecretHandshakeTest do
     test "double blink for 10" do
       assert SecretHandshake.commands(2) == ["double blink"]
     end
-#
+
     # @tag :pending
     test "close your eyes for 100" do
       assert SecretHandshake.commands(4) == ["close your eyes"]
@@ -30,7 +30,7 @@ defmodule SecretHandshakeTest do
       assert SecretHandshake.commands(8) == ["jump"]
     end
 
-    @tag :pending
+    # @tag :pending
     test "combine two actions" do
       assert SecretHandshake.commands(3) == ["wink", "double blink"]
     end
@@ -60,7 +60,7 @@ defmodule SecretHandshakeTest do
       assert SecretHandshake.commands(31) == ["jump", "close your eyes", "double blink", "wink"]
     end
 
-    # @tag :pending
+    @tag :pending
     test "do nothing for zero" do
       assert SecretHandshake.commands(0) == []
     end
