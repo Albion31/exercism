@@ -6,6 +6,9 @@ defmodule SecretHandshake do
     1000 => "jump",
     10000 => "Reverse the order of the operations in the secret handshake"
   }
+
+  @key_code [1, 10, 100, 1000, 10000]
+
   @doc """
   Determine the actions of a secret handshake based on the binary
   representation of the given `code`.
@@ -22,11 +25,10 @@ defmodule SecretHandshake do
   """
   @spec commands(code :: integer) :: list(String.t())
 
-  @code [1, 10, 100, 1000, 1000]
-
   def commands(code) do
     binary_converter(code)
     |> Enum.reduce([], fn
+      {10000, "1"}, acc -> Enum.reverse(acc)
       {key, "1"}, acc -> acc ++ [@secret_code[key]]
       {key, _}, acc -> acc
     end)
@@ -38,28 +40,7 @@ defmodule SecretHandshake do
       |> String.codepoints()
       |> Enum.reverse()
 
-    Enum.zip(@code, list)
+    Enum.zip(@key_code, list)
     |> Map.new()
   end
 end
-
-# def decoder(key) do
-#   # %{1 => one, 10 => ten, 100 => hundred, 1000 => thousand, 10000 => ten_thousand} = @secret_code
-#   list_result = binary_converter(6)
-#   Enum.map(list_result, fn
-#     {key,value} when value == "1" -> @secret_code[key]
-#     {key, value} -> ""
-#   end)
-#   # [one, ten, hundred, thousand, ten_thousand]
-# end
-
-# def commands(0), do: []
-# def commands(code) do
-#   binary_number = binary_converter(code) |> String.to_integer()
-
-#   [@secret_code[binary_number]]
-# end
-
-# def binary_converter(number) do
-#   Integer.to_string(number, 2)
-# end
