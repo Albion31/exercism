@@ -12,7 +12,7 @@ defmodule RotationalCipher do
 
   @spec rotate(text :: String.t(), shift :: integer) :: String.t()
   def rotate(text, shift) do
-   new_number = @code[text] + shift
+   new_number = rem((@code[text] + shift), 26)
 
    @code
     |> Enum.find(fn {key, value} -> value == new_number end)
