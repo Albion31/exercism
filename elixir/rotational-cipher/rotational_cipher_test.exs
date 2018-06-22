@@ -50,7 +50,7 @@ defmodule RotationalCipherTest do
     assert RotationalCipher.rotate(plaintext, shift) == "ifmmp"
   end
 
-  @tag :pending
+  # @tag :pending
   test "rotate capital letters" do
     plaintext = "OMG"
     shift = 5
