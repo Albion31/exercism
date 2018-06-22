@@ -43,6 +43,13 @@ defmodule RotationalCipherTest do
     assert RotationalCipher.rotate(plaintext, shift) == "a"
   end
 
+  # @tag :pending
+  test "rotate a word" do
+    plaintext = "hello"
+    shift = 1
+    assert RotationalCipher.rotate(plaintext, shift) == "ifmmp"
+  end
+
   @tag :pending
   test "rotate capital letters" do
     plaintext = "OMG"
